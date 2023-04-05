@@ -14,13 +14,13 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            BackgroundView(isNight: $isNight)
+            BackgroundView(isNight: isNight)
             
             VStack {
                 CityText(cityName: "Anápolis, GO")
                 
                 TodayCurrentWeather(
-                    isNight: $isNight,
+                    isNight: isNight,
                     currentWeather: weekWeather.first?.temperature ?? 30)
                 
                 HStack(spacing: 20) {
@@ -65,7 +65,7 @@ struct WeatherDayView: View {
                 .font(.system(size: 19, weight: .medium, design: .default))
                 .foregroundColor(.white)
             Image(systemName: "\(imageName)")
-                .renderingMode(.original)
+                .symbolRenderingMode(.multicolor)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 40, height: 40)
@@ -77,12 +77,12 @@ struct WeatherDayView: View {
 }
 
 struct BackgroundView: View {
-    @Binding var isNight: Bool
+    var isNight: Bool
     var body: some View {
         LinearGradient(gradient: Gradient(colors: [isNight ? .black : .blue, isNight ? .gray : Color("lightBlue")]),
                        startPoint: .topLeading,
                        endPoint: .bottomTrailing)
-        .edgesIgnoringSafeArea(.all)
+        .ignoresSafeArea()
     }
 }
 
@@ -97,13 +97,13 @@ struct CityText: View {
 }
 
 struct TodayCurrentWeather: View {
-    @Binding var isNight: Bool
+    var isNight: Bool
     var currentWeather: Int
     
     var body: some View {
         VStack(alignment: .center, spacing: 5) {
             Image(systemName: isNight ? "cloud.moon.fill" : "cloud.sun.fill")
-                .renderingMode(.original)
+                .symbolRenderingMode(.multicolor)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 180, height: 180)
