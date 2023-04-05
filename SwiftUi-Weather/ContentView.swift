@@ -8,51 +8,37 @@
 import SwiftUI
 
 struct ContentView: View {
+    var weekWeather: [DayWeather] = []
+    
+    @State private var isNight = false
+    
     var body: some View {
         ZStack {
-            BackgroundView(gradientColors: [.blue, Color("lightBlue")])
+            BackgroundView(isNight: $isNight)
             
             VStack {
                 CityText(cityName: "Anápolis, GO")
                 
                 TodayCurrentWeather(
-                    currentWeatherImage: "cloud.sun.fill",
-                    currentWeather: "23")
+                    isNight: $isNight,
+                    currentWeather: weekWeather.first?.temperature ?? 30)
                 
                 HStack(spacing: 20) {
-                    WeatherDayView(
-                        dayOfWeek: "MON",
-                        imageName: "cloud.sun.fill",
-                        temperature: 30)
-                    
-                    WeatherDayView(
-                        dayOfWeek: "TUE",
-                        imageName: "sun.max.fill",
-                        temperature: 40)
-                    
-                    WeatherDayView(
-                        dayOfWeek: "WED",
-                        imageName: "wind.snow",
-                        temperature: 20)
-                    
-                    WeatherDayView(
-                        dayOfWeek: "THU",
-                        imageName: "sunset.fill",
-                        temperature: 22)
-                    
-                    WeatherDayView(
-                        dayOfWeek: "FRI",
-                        imageName: "snow",
-                        temperature: 10)
+                    ForEach(weekWeather) { day in
+                        WeatherDayView(
+                            dayOfWeek: day.weekDay,
+                            imageName: day.image,
+                            temperature: day.temperature)
+                    }
                 }
                 Spacer()
                 
                 Button {
-                    print("tapped")
+                    isNight.toggle()
                 } label: {
                     WeatherButton(
                         buttonText: "Change Day Time",
-                        textColor: .blue,
+                        textColor: isNight ? .black : .blue,
                         backgroundColor: .white)
                 }
                 
@@ -64,7 +50,7 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(weekWeather: WeekList.allWeather)
     }
 }
 
@@ -91,10 +77,9 @@ struct WeatherDayView: View {
 }
 
 struct BackgroundView: View {
-    var gradientColors: [Color]
-    
+    @Binding var isNight: Bool
     var body: some View {
-        LinearGradient(gradient: Gradient(colors: gradientColors),
+        LinearGradient(gradient: Gradient(colors: [isNight ? .black : .blue, isNight ? .gray : Color("lightBlue")]),
                        startPoint: .topLeading,
                        endPoint: .bottomTrailing)
         .edgesIgnoringSafeArea(.all)
@@ -112,12 +97,12 @@ struct CityText: View {
 }
 
 struct TodayCurrentWeather: View {
-    var currentWeatherImage: String
-    var currentWeather: String
+    @Binding var isNight: Bool
+    var currentWeather: Int
     
     var body: some View {
         VStack(alignment: .center, spacing: 5) {
-            Image(systemName: "\(currentWeatherImage)")
+            Image(systemName: isNight ? "cloud.moon.fill" : "cloud.sun.fill")
                 .renderingMode(.original)
                 .resizable()
                 .aspectRatio(contentMode: .fit)

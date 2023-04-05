@@ -12,6 +12,7 @@
 		CAEE7F5E29DD18BF00DA91AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAEE7F5D29DD18BF00DA91AB /* Assets.xcassets */; };
 		CAEE7F6129DD18BF00DA91AB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAEE7F6029DD18BF00DA91AB /* Preview Assets.xcassets */; };
 		CAEE7F6829DD2CAE00DA91AB /* WeatherButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEE7F6729DD2CAE00DA91AB /* WeatherButton.swift */; };
+		CAEE7F6A29DD308A00DA91AB /* WeekWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEE7F6929DD308A00DA91AB /* WeekWeather.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		CAEE7F5D29DD18BF00DA91AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CAEE7F6029DD18BF00DA91AB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CAEE7F6729DD2CAE00DA91AB /* WeatherButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherButton.swift; sourceTree = "<group>"; };
+		CAEE7F6929DD308A00DA91AB /* WeekWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekWeather.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,10 +56,11 @@
 			isa = PBXGroup;
 			children = (
 				CAEE7F5929DD18BE00DA91AB /* SwiftUi_WeatherApp.swift */,
+				CAEE7F6729DD2CAE00DA91AB /* WeatherButton.swift */,
 				CAEE7F5B29DD18BE00DA91AB /* ContentView.swift */,
+				CAEE7F6929DD308A00DA91AB /* WeekWeather.swift */,
 				CAEE7F5D29DD18BF00DA91AB /* Assets.xcassets */,
 				CAEE7F5F29DD18BF00DA91AB /* Preview Content */,
-				CAEE7F6729DD2CAE00DA91AB /* WeatherButton.swift */,
 			);
 			path = "SwiftUi-Weather";
 			sourceTree = "<group>";
@@ -140,6 +143,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAEE7F6A29DD308A00DA91AB /* WeekWeather.swift in Sources */,
 				CAEE7F5C29DD18BE00DA91AB /* ContentView.swift in Sources */,
 				CAEE7F5A29DD18BE00DA91AB /* SwiftUi_WeatherApp.swift in Sources */,
 				CAEE7F6829DD2CAE00DA91AB /* WeatherButton.swift in Sources */,
